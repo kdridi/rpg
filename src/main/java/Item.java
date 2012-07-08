@@ -11,7 +11,7 @@ public class Item {
 	public Item(Game game, int x, int y){
 		this.game = game;
 		
-		ImageIcon img = new ImageIcon("sword.png");
+		ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("sword.png"));
 		item = img.getImage();
 
 		this.x = x;

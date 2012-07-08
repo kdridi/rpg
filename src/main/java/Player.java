@@ -6,7 +6,7 @@ public class Player {
 	private Image player;
 
 	public Player() {
-		ImageIcon img = new ImageIcon(getClass().getResource("/player.png"));
+		ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("player.png"));
 		player = img.getImage();
 
 		x = 9;
