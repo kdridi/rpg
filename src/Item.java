@@ -6,10 +6,10 @@ import javax.swing.ImageIcon;
 public class Item {
 	int x, y;
 	private Image item;
-	Game g;
+	Game game;
 	
-	public Item(Game g, int x, int y){
-		this.g = g;
+	public Item(Game game, int x, int y){
+		this.game = game;
 		
 		ImageIcon img = new ImageIcon("sword.png");
 		item = img.getImage();

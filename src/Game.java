@@ -2,21 +2,24 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Game implements ActionListener {
-	Player p = new Player(this);
-	Item item = new Item(this,10,10);
-	Map m = new Map();
-	Board b;
+	Player player = new Player();
+	Item item = new Item(this, 10, 10);
+	Map map = new Map();
+	Board board;
 	Timer timer;
 
 	public Game() {
-		Window window = new Window(this);
-		Control c = new Control(this);
-		window.addKeyListener(c);
-		b = new Board(this);
-		window.add(b);
-		timer = new Timer(25, this);
-		timer.start();
+		this.board = new Board(this);
+
+		Control control = new Control(this);
+
+		Window window = new Window();
+		window.addKeyListener(control);
+		window.add(this.board);
 		window.setVisible(true);
+
+		this.timer = new Timer(25, this);
+		this.timer.start();
 	}
 
 	public static void main(String[] args) {
@@ -25,12 +28,36 @@ public class Game implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		// ausgabe();
-		b.repaint();
+		this.board.repaint();
 	}
+	
+	/**
+     * Returns the current map of the game.
+     * 
+     * @return the current map of the game.
+     */
+    public Map getMap() {
+            if (this.map != null) {
+                    return this.map;
+            }
+            return null;
+    }
+
+    /**
+     * Returns the current player of the game.
+     * 
+     * @return the current player of the game.
+     */
+    public Player getPlayer() {
+            if (this.player != null) {
+                    return this.player;
+            }
+            return null;
+    }
 
 	public void ausgabe() {
-		int x = p.getX();
-		int y = p.getY();
+		int x = this.player.getX();
+		int y = this.player.getY();
 		System.out.println("Player -- Position: " + x + ":" + y);
 	}
 }

@@ -1,14 +1,14 @@
 import java.awt.event.*;
 
 public class Control implements KeyListener {
-	Game g;
-	Player p;
-	Map m;
+	Game game;
+	Player player;
+	Map map;
 
-	Control(Game g) {
-		this.g = g;
-		this.p = g.p;
-		this.m = g.m;
+	Control(Game game) {
+		this.game = game;
+		this.player = game.player;
+		this.map = game.map;
 	}
 
 	public void keyPressed(KeyEvent e) {
@@ -21,24 +21,24 @@ public class Control implements KeyListener {
 		// Movement
 		else if (keyCode == KeyEvent.VK_UP) {
 			// System.out.println("pressed: UP");
-			if (m.getMap(p.getY() - 1, p.getX()) != 1) {
-				p.move(0, -1);
+			if (this.map.getMap(this.player.getY() - 1, this.player.getX()) != 1) {
+				this.player.move(0, -1);
 			}
 
 		} else if (keyCode == KeyEvent.VK_DOWN) {
 			// System.out.println("pressed: DOWN");
-			if (m.getMap(p.getY() + 1, p.getX()) != 1) {
-				p.move(0, 1);
+			if (this.map.getMap(this.player.getY() + 1, this.player.getX()) != 1) {
+				this.player.move(0, 1);
 			}
 		} else if (keyCode == KeyEvent.VK_LEFT) {
 			// System.out.println("pressed: LEFT");
-			if (m.getMap(p.getY(), p.getX() - 1) != 1) {
-				p.move(-1, 0);
+			if (this.map.getMap(this.player.getY(), this.player.getX() - 1) != 1) {
+				this.player.move(-1, 0);
 			}
 		} else if (keyCode == KeyEvent.VK_RIGHT) {
 			// System.out.println("pressed: RIGHT");
-			if (m.getMap(p.getY(), p.getX() + 1) != 1) {
-				p.move(1, 0);
+			if (this.map.getMap(this.player.getY(), this.player.getX() + 1) != 1) {
+				this.player.move(1, 0);
 			}
 		}
 		// Spells
